@@ -2,9 +2,9 @@
 
 /**
  * @Author: Dan Marinescu
- * @Date:   2018-04-10 14:07:19
+ * @Date:   2018-04-12 13:31:53
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2018-04-12 13:36:10
+ * @Last Modified time: 2018-04-12 13:33:39
  */
 
 namespace ApiUser\Mapper;
@@ -13,12 +13,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Zend\Hydrator\ClassMethods;
 
-class OAuthUser implements \ApiBase\Mapper\MapperJsonInterface
+class UserDetail implements \ApiBase\Mapper\MapperJsonInterface
 {
     private $id;
-    private $name;
-    private $email;
-    private $detail;
+    private $firstName;
+    private $lastName;
 
     private $objectManager;
     private $hydrator;
@@ -66,19 +65,19 @@ class OAuthUser implements \ApiBase\Mapper\MapperJsonInterface
     /**
      * @return mixed
      */
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $firstName
      *
      * @return self
      */
-    public function setName($name)
+    public function setFirstName($firstName)
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
 
         return $this;
     }
@@ -86,39 +85,19 @@ class OAuthUser implements \ApiBase\Mapper\MapperJsonInterface
     /**
      * @return mixed
      */
-    public function getEmail()
+    public function getLastName()
     {
-        return $this->email;
+        return $this->lastName;
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $lastName
      *
      * @return self
      */
-    public function setEmail($email)
+    public function setLastName($lastName)
     {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDetail()
-    {
-        return $this->detail->extract();
-    }
-
-    /**
-     * @param mixed $detail
-     *
-     * @return self
-     */
-    public function setDetail($detail)
-    {
-        $this->detail = (new UserDetail($this->objectManager))->hydrate($detail);
+        $this->lastName = $lastName;
 
         return $this;
     }
