@@ -30,6 +30,7 @@
         "zfcampus/zf-api-problem": "^1.2",
         "zendframework/zend-console": "^2.7",
         "zendframework/zend-mvc-console": "^1.1",
+        "danmarinescu79/api-base": "^0.0.1@dev",
         "doctrine/doctrine-orm-module": "^2.1"
     },
     "require-dev": {
