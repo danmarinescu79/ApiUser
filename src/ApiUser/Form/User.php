@@ -4,7 +4,7 @@
  * @Author: Dan Marinescu
  * @Date:   2018-04-11 14:26:40
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2018-04-11 14:51:14
+ * @Last Modified time: 2018-05-22 23:57:02
  */
 
 namespace ApiUser\Form;
@@ -22,22 +22,18 @@ class User extends Form
 
         $this->setHydrator(new DoctrineHydrator($objectManager));
 
-        $detail   = new Fieldset\UserDetail($objectManager);
         $fieldset = new UserFieldset($objectManager);
         $fieldset->setUseAsBaseFieldset(true);
-        $fieldset->add($detail);
         $this->add($fieldset);
 
         $this->setValidationGroup([
             'oauth_user' => [
-                'name',
+                'id',
+                'last_name',
+                'first_name',
                 'email',
                 'password',
                 'verify_password',
-                'detail' => [
-                    'last_name',
-                    'first_name',
-                ],
             ],
         ]);
     }
