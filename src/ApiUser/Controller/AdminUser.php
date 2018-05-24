@@ -4,7 +4,7 @@
  * @Author: Dan Marinescu
  * @Date:   2018-03-28 15:33:29
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2018-05-24 12:41:03
+ * @Last Modified time: 2018-05-24 14:09:07
  */
 
 namespace ApiUser\Controller;
@@ -51,7 +51,7 @@ class AdminUser extends AbstractRestfulController
     {
         $data['id'] = $entity->getId();
         
-        $form = $this->service->getForm();
+        $form = $this->service->getForm(!empty($entity->getId()) ? true : false);
         $form->bind($entity);
         $form->setData(['oauth_user' => $data]);
 

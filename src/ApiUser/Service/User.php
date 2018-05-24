@@ -4,7 +4,7 @@
  * @Author: Dan Marinescu
  * @Date:   2018-03-28 15:33:58
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2018-04-11 15:05:25
+ * @Last Modified time: 2018-05-24 14:09:27
  */
 
 namespace ApiUser\Service;
@@ -41,9 +41,9 @@ class User
         return $mapper->map($data, \ApiUser\Mapper\OAuthUser::class);
     }
 
-    public function getForm()
+    public function getForm(bool $allowEmpty = false)
     {
-        return new \ApiUser\Form\User($this->objectManager);
+        return new \ApiUser\Form\User($this->objectManager, $allowEmpty);
     }
 
     public function save(Entity $entity)
