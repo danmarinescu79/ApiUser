@@ -4,7 +4,7 @@
  * @Author: Dan Marinescu
  * @Date:   2018-03-28 15:33:29
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2018-05-23 00:05:09
+ * @Last Modified time: 2018-05-24 12:41:03
  */
 
 namespace ApiUser\Controller;
@@ -59,7 +59,8 @@ class AdminUser extends AbstractRestfulController
             $this->service->save($entity);
             return $this->get($entity->getId());
         } else {
-            return new JsonModel($form->getMessages());
+            $messages = $form->getMessages();
+            return new JsonModel(['error' => $messages['oauth_user']]);
         }
         return new JsonModel([]);
     }
